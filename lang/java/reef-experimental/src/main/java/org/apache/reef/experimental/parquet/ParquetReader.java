@@ -170,4 +170,12 @@ public final class ParquetReader {
     buf.order(ByteOrder.LITTLE_ENDIAN);
     return buf;
   }
+
+  public static void main(final String[] args) throws IOException {
+    final String parquetPath = args[0];
+    final String avroPath = args[1];
+    final ParquetReader reader = new ParquetReader(parquetPath);
+    final File avroFile = new File(avroPath);
+    reader.serializeToDisk(avroFile);
+  }
 }
